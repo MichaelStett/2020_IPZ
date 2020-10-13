@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\.repos\ProjectAlfa\API\API.xml</DocumentationFile>
+    <DocumentationFile>D:\.repos\ProjectAlpha-2020\api-docker\src\API\API.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
     <GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
