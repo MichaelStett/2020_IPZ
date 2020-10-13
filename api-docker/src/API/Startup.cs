@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 using Application;
 using Infrastructure;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace API
@@ -35,6 +39,8 @@ namespace API
             services.AddApplication();
             services.AddInfrastructure(Configuration);
 
+            services.AddSingleton<IConfiguration>(Configuration);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -48,6 +54,34 @@ namespace API
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+
+            #region Tokens
+            var symmetricSecurityKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(Configuration["Token:Options:Key"]));
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = "projectalpha-2020.com",
+                    ValidAudience = "projectalpha-2020.com",
+                    IssuerSigningKey = symmetricSecurityKey
+                };
+            });
+
+            services.AddAuthorization(options =>
+                options.AddPolicy("ValidAccessToken", policy =>
+                {
+                    policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
+                    policy.RequireAuthenticatedUser();
+                }));
+            #endregion
 
             services.AddControllers();
         }
@@ -71,6 +105,8 @@ namespace API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

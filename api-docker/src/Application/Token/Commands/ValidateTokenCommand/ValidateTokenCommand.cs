@@ -1,5 +1,6 @@
 ﻿using MediatR;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 using System;
@@ -11,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.System.Commands.ValidateTokenCommand
+namespace Application.Token.Commands.ValidateTokenCommand
 {
     public class ValidateTokenCommand : IRequest<bool>
     {
@@ -19,6 +20,11 @@ namespace Application.System.Commands.ValidateTokenCommand
 
         public class ValidateTokenCommandHandler : IRequestHandler<ValidateTokenCommand, bool>
         {
+            private readonly IConfiguration _configuration;
+
+            public ValidateTokenCommandHandler(IConfiguration configuration)
+                => (_configuration) = (configuration);
+
             public async Task<bool> Handle(ValidateTokenCommand request, CancellationToken cancellationToken)
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
@@ -29,7 +35,7 @@ namespace Application.System.Commands.ValidateTokenCommand
                     ValidateIssuer = false,   
                     ValidIssuer = "",
                     ValidAudience = "",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenGlobal.SECRET))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Token:Options:Key"]))
                 };
 
                 IPrincipal principal = tokenHandler.ValidateToken(request.Token, validationParameters, out SecurityToken validatedToken);

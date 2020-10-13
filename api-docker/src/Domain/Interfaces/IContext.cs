@@ -1,5 +1,4 @@
-﻿using Domain.Entities;
-
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 using System;
@@ -11,7 +10,7 @@ namespace Domain.Interfaces
 {
     public interface IContext
     {
-        DbSet<User> Users { get; set; }
+        public DbSet<IdentityUser> Users { get; set; }
 
         Task SaveChangesAsync();
     }

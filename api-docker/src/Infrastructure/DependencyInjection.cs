@@ -17,7 +17,18 @@ namespace Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<Context>(opt =>
-                opt.UseSqlServer(configuration.GetConnectionString("DatabaseAzure")));
+                opt.UseSqlServer(configuration.GetConnectionString("DatabaseLocal")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(opt => {
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequiredUniqueChars = 0;
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<Context>();
+
+            //services.AddDbContext<Context>(opt =>
+            //    opt.UseSqlServer(configuration.GetConnectionString("DatabaseAzure")));
 
             services.AddScoped<IContext, Context>();
 

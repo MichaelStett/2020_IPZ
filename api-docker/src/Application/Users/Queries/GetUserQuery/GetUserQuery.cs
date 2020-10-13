@@ -1,8 +1,8 @@
-﻿using Domain.Entities;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
 
 using MediatR;
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 using System;
@@ -14,18 +14,18 @@ using System.Threading.Tasks;
 
 namespace Application.Users.Queries.GetUserQuery
 {
-    public class GetUserQuery : IRequest<User>
+    public class GetUserQuery : IRequest<IdentityUser>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public class GetUserQueryHandler : IRequestHandler<GetUserQuery, User>
+        public class GetUserQueryHandler : IRequestHandler<GetUserQuery, IdentityUser>
         {
             private readonly IContext _context;
 
             public GetUserQueryHandler(IContext context)
                 => (_context) = (context);
 
-            public async Task<User> Handle(GetUserQuery request, CancellationToken cancellationToken)
+            public async Task<IdentityUser> Handle(GetUserQuery request, CancellationToken cancellationToken)
             {
                 var users = await _context.Users.ToListAsync();
 
