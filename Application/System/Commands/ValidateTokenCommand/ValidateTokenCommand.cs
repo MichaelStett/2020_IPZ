@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.System.Token.ValidateTokenCommand
+namespace Application.System.Commands.ValidateTokenCommand
 {
     public class ValidateTokenCommand : IRequest<bool>
     {

@@ -16,22 +16,12 @@ namespace Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            if (Environment.GetEnvironmentVariable("ASP.NET_ENVIROMENT") == "Production")
-                services.AddDbContext<Context>(opt =>
-                    opt.UseSqlServer(configuration.GetConnectionString("DatabaseAzure")));
-            else
-                services.AddDbContext<Context>(opt =>
-                    opt.UseSqlServer(configuration.GetConnectionString("DatabaseLocal")));
-
-
-            services.BuildServiceProvider().GetService<Context>().Database.Migrate();
-
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.AddDbContext<Context>(opt =>
+                opt.UseSqlServer(configuration.GetConnectionString("DatabaseAzure")));
 
             services.AddScoped<IContext, Context>();
 
+            services.BuildServiceProvider().GetService<Context>().Database.Migrate();
         }
     }
 }

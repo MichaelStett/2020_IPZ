@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Application.System.Token.CreateTokenCommand;
-using Application.System.Token.ValidateTokenCommand;
+using Application.System.Commands.CreateTokenCommand;
+using Application.System.Commands.ValidateTokenCommand;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-
-    public class TokenController : BaseController
+    public class SystemController : BaseController
     {
         [AllowAnonymous]
         [HttpGet]

@@ -10,7 +10,7 @@ using MediatR;
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace Application.System.Token.CreateTokenCommand
+namespace Application.System.Commands.CreateTokenCommand
 {
     public class CreateTokenCommand : IRequest<string>
     {

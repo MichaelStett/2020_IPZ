@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.System.Token
+namespace Application.System.Commands
 {
     internal class TokenGlobal
     {
