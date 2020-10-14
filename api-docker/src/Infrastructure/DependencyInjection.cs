@@ -17,7 +17,7 @@ namespace Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<Context>(opt =>
-                opt.UseSqlServer(configuration.GetConnectionString("DatabaseLocal")));
+                opt.UseSqlServer(configuration.GetConnectionString("Database")));
 
             services.AddIdentity<IdentityUser, IdentityRole>(opt => {
                 opt.Password.RequiredLength = 8;

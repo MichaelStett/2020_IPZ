@@ -39,8 +39,9 @@ namespace API
             services.AddApplication();
             services.AddInfrastructure(Configuration);
 
-            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddSingleton(Configuration);
 
+            #region Swagger 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -54,7 +55,7 @@ namespace API
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-
+            #endregion
 
             #region Tokens
             var symmetricSecurityKey = new SymmetricSecurityKey(
@@ -92,13 +93,14 @@ namespace API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectAlpha V1");
-                });
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectAlpha V1");
+            });
 
             app.UseHttpsRedirection();
 
