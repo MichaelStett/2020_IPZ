@@ -1,0 +1,14 @@
+:root{
+    --dark: #141414;
+    --accent: #5e0090;
+}
+
+body {
+    padding-top: 70px; /* because of fixed navabar */
+}
+
+a > li:nth-child(odd)
+{
+    color: var(--accent);
+    background-color: var(--dark);
+}

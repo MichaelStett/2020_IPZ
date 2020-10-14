@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Remote -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Local -->
+<link rel="stylesheet" href="styles.css">
+<script src="scripts.js"></script>
+
+<body>
+
+<div include--html="navbar.html"></div> 
+
+<h1> Test   </h1>
+
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
+
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
+
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
+
+<script>
+    includeHTML();
+
+    const userAction = async () => {
+        const response = await fetch('http://example.com/movies.json');
+        const myJson = await response.json(); //extract JSON from the http response
+        
+        console.log(myJson)
+    }
+</script>
+</body>
+</html>
