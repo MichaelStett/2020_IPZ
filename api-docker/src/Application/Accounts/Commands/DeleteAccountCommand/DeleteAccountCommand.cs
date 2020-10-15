@@ -32,7 +32,10 @@ namespace Application.Accounts.Commands.DeleteAccountCommand
                 if (user == null)
                     return false;
 
-                await _userManager.DeleteAsync(user);
+                var result = await _userManager.DeleteAsync(user);
+
+                if (!result.Succeeded)
+                    return false;
 
                 return true;
             }
