@@ -7,7 +7,7 @@ body {
     padding-top: 70px; /* because of fixed navabar */
 }
 
-a > li:nth-child(odd)
+ul > li:nth-child(odd)
 {
     color: var(--accent);
     background-color: var(--dark);

@@ -1,40 +1,37 @@
 <!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Remote -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <title>ProjectAlpha-2020</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!-- Local -->
-<link rel="stylesheet" href="styles.css">
-<script src="scripts.js"></script>
-
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
 <body>
+    <div class="navbar_wraper"></div> <!-- lodaed from components -->
 
-<div include--html="navbar.html"></div> 
+    <div class="container-fluid">
+        <h1> Test </h1>
 
-<h1> Test   </h1>
-
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
-
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
-
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
-
-<script>
-    includeHTML();
-
-    const userAction = async () => {
-        const response = await fetch('http://example.com/movies.json');
-        const myJson = await response.json(); //extract JSON from the http response
+        <ul>
+            <li><a>Test 1</a></li>
+            <li><a>Test 2</a></li>
+            <li><a>Test 3</a></li>
+            <li><a>Test 4</a></li>
+            <li><a>Test 5</a></li>
+        </ul>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
         
-        console.log(myJson)
-    }
-</script>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
+        
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
