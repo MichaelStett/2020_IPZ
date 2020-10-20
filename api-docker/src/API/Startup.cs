@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Application;
+using Application.Common.Settings;
+
 using Infrastructure;
 
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -36,6 +38,8 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<OpenWeatherSettings>(Configuration.GetSection("OpenWeatherSettings"));
+
             services.AddApplication();
             services.AddInfrastructure(Configuration);
 
