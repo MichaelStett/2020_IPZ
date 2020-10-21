@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Application.Weather.Models;
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-using Domain.Models;
-
-namespace Domain.Interfaces
+namespace Application.Common.Interfaces
 {
     public interface IOpenWeatherClient
     {

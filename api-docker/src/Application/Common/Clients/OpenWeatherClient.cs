@@ -1,5 +1,5 @@
-﻿using Domain.Interfaces;
-using Domain.Models;
+﻿using Application.Common.Interfaces;
+using Application.Weather.Models;
 
 using Newtonsoft.Json;
 

@@ -10,7 +10,7 @@ using AutoMapper;
 using Microsoft.Extensions.Options;
 using Application.Common.Settings;
 using Application.Common.Clients;
-using Domain.Interfaces;
+using Application.Common.Interfaces;
 
 namespace Application
 {
