@@ -1,37 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float:left;
+  width:20%;
+  text-align:center;
+}
+.menu a {
+  background-color:#e5e5e5;
+  padding:8px;
+  margin-top:7px;
+  display:block;
+  width:100%;
+  color:black;
+}
+.main {
+  float:left;
+  width:60%;
+  padding:0 20px;
+}
+.right {
+  background-color:#e5e5e5;
+  float:left;
+  width:20%;
+  padding:15px;
+  margin-top:7px;
+  text-align:center;
+}
 
-    <title>ProjectAlpha-2020</title>
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width:100%;
+  }
+}
 
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+
+
+</style>
+</div>
+</form>
+</div>
+    <link rel="stylesheet" href="main.css">
+        <style>
+        body{
+        width:970px;
+        background-color:azure;
+        margin: 25px auto;
+             padding:25px;
+           background-color:rgba(0,50,100,0.5); 
+            color:white;
+            
+        }
+        html
+            {
+    
+                 background-image: url(pogoda.jpg);
+                background-attachment: fixed;
+                background-size: cover;
+        }
+           
+            img
+            {
+                width:640px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+             img:first-of-type{
+                width:100%;
+            }
+        </style>
+    </head>
+<style>
+
+    ol > li {
+      float:left;
+      width:150px;
+      /*margin-left:1px;*/
+      
+      height:2em;
+    }
+
+    ol > li:first-child {
+      margin-left:0;
+    }
+
+    ol > li:hover > a {
+      color:#09C;
+    }
+    ol > li:hover > ul {
+      display:block;
+    }
+
+    ol > li > ul {
+      display:none;
+      list-style-type:none;
+      padding:0;
+      margin:0;
+    }
+
+    ol > li > ul > li {
+      position:relative;
+      
+    }
+    ol > li > ul > li > a {
+      border-top:1px solid #FFF;
+    }
+
+  </style>
 </head>
 <body>
-    <div class="navbar_wraper"></div> <!-- lodaed from components -->
-
-    <div class="container-fluid">
-        <h1> Test </h1>
-
+    
+    <ol>
+      <li><a href="#">Home</a>
         <ul>
-            <li><a>Test 1</a></li>
-            <li><a>Test 2</a></li>
-            <li><a>Test 3</a></li>
-            <li><a>Test 4</a></li>
-            <li><a>Test 5</a></li>
+          <li><a href="#">link - 1</a></li>
+          <li><a href="#">link - 2</a></li>
+          <li><a href="#">link - 3</a></li>
+          <li><a href="#">link - 4</a></li>
+          <li><a href="#">link - 5</a></li>
         </ul>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
-        
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
-        
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia sapiente eum tempora, voluptas tempore ratione deleniti corporis cum consequatur perspiciatis optio repellendus iure aliquam, sequi voluptatem aspernatur autem velit rerum.</p>
-    </div>
+      </li>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+      <li><a href="#">About us</a>
+        <ul>
+          <li><a href="#">link - 1</a></li>
+          <li><a href="#">link - 2</a></li>
+          <li><a href="#">link - 3</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">My List</a></li>
+
+      <li><a href="#">Log out</a>
+        <ul>
+          <li><a href="#">link - 1</a></li>
+          <li><a href="#">link - 2</a></li>
+          <li><a href="#">link - 3</a></li>
+          <li><a href="#">link - 4</a></li>
+        </ul>
+      </li>
+    </ol>
+
+  </body>
+<body style="font-family:Verdana;color:#aaaaaa;">
+
+<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>App Name</h1>
+</div>
+
+<div style="overflow:auto">
+
+
+  <div class="main">
+
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.square {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+}
+</style>
+</head>
+<body>
+   
+<h5>My location</h5>
+<p>&nbsp</p>
+<p>&nbsp</p>
+
+</body>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+
+
+    <h2>Lorum Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+  </div>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<p>&nbsp</p>
+<p>&nbsp</p>
+<style>
+  
+.square {
+  height: 150px;
+  width: 700px;
+  background-color: blue;
+}
+</style>
+
+</head>
+<body>
+
+<div class="square"></div>
+
+</body>
+  <div class="right">
+    <h2>Reklamy</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+
+  </div>
+</div>
+
+<div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">© copyright projekt zespolowy</div>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
