@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float:left;
+  width:20%;
+  text-align:center;
+}
+.menu a {
+  background-color:#e5e5e5;
+  padding:8px;
+  margin-top:7px;
+  display:block;
+  width:100%;
+  color:black;
+}
+.main {
+  float:left;
+  width:60%;
+  padding:0 20px;
+}
+.right {
+  background-color:#e5e5e5;
+  float:left;
+  width:20%;
+  padding:15px;
+  margin-top:7px;
+  text-align:center;
+}
+
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width:100%;
+  }
+}
+
+
+
+</style>
+</div>
+</form>
+</div>
+    <link rel="stylesheet" href="main.css">
+        <style>
+        body{
+        width:970px;
+        background-color:azure;
+        margin: 25px auto;
+             padding:25px;
+           background-color:rgba(0,50,100,0.5); 
+            color:white;
+            
+        }
+        html
+            {
+    
+                 background-image: url(pogoda.jpg);
+                background-attachment: fixed;
+                background-size: cover;
+        }
+           
+            img
+            {
+                width:640px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+             img:first-of-type{
+                width:100%;
+            }
+        </style>
+    </head>
+<style>
+
+    ol > li {
+      float:left;
+      width:150px;
+      /*margin-left:1px;*/
+      
+      height:2em;
+    }
+
+    ol > li:first-child {
+      margin-left:0;
+    }
+
+    ol > li:hover > a {
+      color:#09C;
+    }
+    ol > li:hover > ul {
+      display:block;
+    }
+
+    ol > li > ul {
+      display:none;
+      list-style-type:none;
+      padding:0;
+      margin:0;
+    }
+
+    ol > li > ul > li {
+      position:relative;
+      
+    }
+    ol > li > ul > li > a {
+      border-top:1px solid #FFF;
+    }
+
+  </style>
+</head>
+<body>
+    
+    <ol>
+      <li><a href="#">Home</a>
+        <ul>
+          <li><a href="#">link - 1</a></li>
+          <li><a href="#">link - 2</a></li>
+          <li><a href="#">link - 3</a></li>
+          <li><a href="#">link - 4</a></li>
+          <li><a href="#">link - 5</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">About us</a>
+        <ul>
+          <li><a href="#">link - 1</a></li>
+          <li><a href="#">link - 2</a></li>
+          <li><a href="#">link - 3</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">My List</a></li>
+
+      <li><a href="#">Log out</a>
+        <ul>
+          <li><a href="#">link - 1</a></li>
+          <li><a href="#">link - 2</a></li>
+          <li><a href="#">link - 3</a></li>
+          <li><a href="#">link - 4</a></li>
+        </ul>
+      </li>
+    </ol>
+
+  </body>
+<body style="font-family:Verdana;color:#aaaaaa;">
+
+<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>App Name</h1>
+</div>
+
+<div style="overflow:auto">
+
+
+  <div class="main">
+
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.square {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+}
+</style>
+</head>
+<body>
+   
+<h5>My location</h5>
+<p>&nbsp</p>
+<p>&nbsp</p>
+
+</body>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+
+
+    <h2>Lorum Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+  </div>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<p>&nbsp</p>
+<p>&nbsp</p>
+<style>
+  
+.square {
+  height: 150px;
+  width: 700px;
+  background-color: blue;
+}
+</style>
+
+</head>
+<body>
+
+<div class="square"></div>
+
+</body>
+  <div class="right">
+    <h2>Reklamy</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+
+  </div>
+</div>
+
+<div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">© copyright projekt zespolowy</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
