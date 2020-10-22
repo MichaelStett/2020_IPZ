@@ -11,6 +11,8 @@ using Microsoft.Extensions.Options;
 using Application.Common.Settings;
 using Application.Common.Clients;
 using Application.Common.Interfaces;
+using Application.Common.Behaviours;
+using FluentValidation;
 
 namespace Application
 {
@@ -20,6 +22,10 @@ namespace Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
 
             services.AddTransient<IOpenWeatherClient, OpenWeatherClient>();
 

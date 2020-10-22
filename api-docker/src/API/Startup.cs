@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Application;
 using Application.Common.Settings;
 
+using FluentValidation;
+
 using Infrastructure;
 
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -39,6 +41,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<OpenWeatherSettings>(Configuration.GetSection("OpenWeatherSettings"));
+
 
             services.AddApplication();
             services.AddInfrastructure(Configuration);
@@ -92,11 +95,16 @@ namespace API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
+                logger.LogInformation("In Development.");
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                logger.LogInformation("Not Development.");
             }
 
             app.UseSwagger();

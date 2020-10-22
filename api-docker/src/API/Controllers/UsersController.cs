@@ -18,19 +18,19 @@ namespace API.Controllers
     public class UsersController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<IdentityUser>>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
             return base.Ok(await Mediator.Send(new GetAllUsersQuery()));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IdentityUser>> GetUser(string id)
+        public async Task<IActionResult> GetUser(string id)
         {
             return base.Ok(await Mediator.Send(new GetUserQuery { Id = id }));
         }
 
         [HttpPost("authenticate")]
-        public async Task<ActionResult<IdentityUser>> Authenticate(string id)
+        public async Task<IActionResult> Authenticate(string id)
         {
             return base.Ok(await Mediator.Send(new GetUserQuery { Id = id }));
         }

@@ -15,14 +15,14 @@ namespace API.Controllers
     {
         [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult<bool>> Get(string token)
+        public async Task<IActionResult> Get(string token)
         {
             return base.Ok(await Mediator.Send(new ValidateTokenCommand { Token = token }));
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<string>> Get([FromBody] CreateTokenCommand command)
+        public async Task<IActionResult> Get([FromBody] CreateTokenCommand command)
         {
             return base.Ok(await Mediator.Send(command));
         }
