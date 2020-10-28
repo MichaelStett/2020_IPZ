@@ -24,4 +24,10 @@ body > .container > .row > .col {
   line-height: 60px;
   background-color: #e6e6e6;
 }
+
+#mapid {
+  background-color: #e6e6e6;
+  height: 500px;
+  border: 1px solid black;
+}
 /*# sourceMappingURL=styles.css.map */
