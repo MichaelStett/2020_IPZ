@@ -102,11 +102,7 @@ function refreshDateLayer() {
 
     let time = date.toLocaleTimeString(language, { hour: '2-digit', minute: '2-digit' });
 
-    if (language.includes("pl")){
-        dataLayer.innerHTML = `Dzis jest ${dayOfWeek}, ${todayDate} <br> ${time}`;
-    } else {
-        dataLayer.innerHTML = `Today is ${dayOfWeek}, ${todayDate} <br> ${time}`;
-    }
+    dataLayer.innerHTML = `Today is ${dayOfWeek}, ${todayDate} <br> ${time}`;
   }
 
   refreshDateLayer();
