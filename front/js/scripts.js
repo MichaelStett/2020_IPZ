@@ -81,13 +81,17 @@ function error() {
     alert(`ERROR(${error.code}): ${error.message}`);
 }
 
-if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition((position) => {
-        intitializeLocation(position);
-    });
-} else {
-    error() 
+function getCurrentLocation() {
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            intitializeLocation(position);
+        });
+    } else {
+        error() 
+    }
 }
+
+getLocationButton.addEventListener("click", _ => getCurrentLocation())
 //#endregion
 
 //#region  Clock 
@@ -108,5 +112,4 @@ function refreshDateLayer() {
   refreshDateLayer();
 
   setTimeout(refreshDateLayer, 60*1000); // each minute
-  
 //#endregion
