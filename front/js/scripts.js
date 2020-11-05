@@ -89,3 +89,28 @@ if ('geolocation' in navigator) {
     error() 
 }
 //#endregion
+
+//#region  Clock 
+function refreshDateLayer() {
+    let date = new Date();
+
+    let { language } = window.navigator;
+
+    let todayDate = date.toLocaleDateString(language, { year: 'numeric', month: 'long', day: 'numeric' })
+
+    let dayOfWeek = date.toLocaleString(language, { weekday: 'long' })
+
+    let time = date.toLocaleTimeString(language, { hour: '2-digit', minute: '2-digit' });
+
+    if (language.includes("pl")){
+        dataLayer.innerHTML = `Dzis jest ${dayOfWeek}, ${todayDate} <br> ${time}`;
+    } else {
+        dataLayer.innerHTML = `Today is ${dayOfWeek}, ${todayDate} <br> ${time}`;
+    }
+  }
+
+  refreshDateLayer();
+
+  setTimeout(refreshDateLayer, 60*1000); // each minute
+  
+//#endregion
