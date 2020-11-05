@@ -26,4 +26,13 @@ body {
   height: 60px;
   line-height: 60px;
   background-color: $color-1;
+  z-index: 999;
+}
+
+#mapid {
+  background-color: $color-1;
+  height: 50vh;
+  width: inherit;
+  border: 1px solid black;
+  z-index: 1;
 }

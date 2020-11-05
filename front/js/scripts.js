@@ -1,0 +1,91 @@
+//#region Location
+
+const access_token = "pk.eyJ1IjoibWljaGFlbHN0ZXR0IiwiYSI6ImNrZ3R3dW9vdzExbm8ycW1mMWRiZDZwMXQifQ.PjXKXl0zpEcJ88JyhuT-yQ";
+
+// https://leafletjs.com/reference-1.7.1.html
+let longitude = 51.505;
+let latitude = -0.09;
+let map = null;
+
+function onMapClick(e) {
+    let lat = e.latlng.lat.toFixed(4);
+    let lon = e.latlng.lng.toFixed(4);
+
+    var marker = L.marker([lat, lon]).addTo(map);
+
+    var popup = L.popup()
+        .setContent(`Cliked on: ${lat}, ${lon}`);
+
+    marker.bindPopup(popup).openPopup();
+}
+
+function onLocationFound(e) {
+    const options = {
+        // customize: https://leafletjs.com/reference-1.0.3.html#popup
+    };
+
+    let radius = e.accuracy;
+
+    let popup = L.popup(options)
+        .setContent("You are within " + radius + " meters from this point.");
+        
+    // https://github.com/pointhi/leaflet-color-markers
+    var icon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    L.marker(e.latlng, { icon }).addTo(map)
+        .bindPopup(popup).openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
+
+function intitializeLocation(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+
+    currentLocation.innerText = `${latitude}, ${longitude}`;
+
+    map = L.map('mapid').setView([latitude, longitude], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 20,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: access_token
+    }).addTo(map);
+
+    map.locate({setView: true, maxZoom: 16});
+
+    map.on('locationfound', onLocationFound);
+
+    map.on('locationerror', onLocationError);
+
+    map.on('click', onMapClick);
+
+}
+
+
+function error() {
+    alert(`ERROR(${error.code}): ${error.message}`);
+}
+
+if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+        intitializeLocation(position);
+    });
+} else {
+    error() 
+}
+//#endregion

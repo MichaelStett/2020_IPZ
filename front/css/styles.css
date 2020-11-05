@@ -23,5 +23,14 @@ body > .container > .row > .col {
   height: 60px;
   line-height: 60px;
   background-color: #e6e6e6;
+  z-index: 999;
+}
+
+#mapid {
+  background-color: #e6e6e6;
+  height: 50vh;
+  width: inherit;
+  border: 1px solid black;
+  z-index: 1;
 }
 /*# sourceMappingURL=styles.css.map */
