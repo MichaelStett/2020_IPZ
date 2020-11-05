@@ -125,3 +125,7 @@ function refreshDateLayer() {
 
   setTimeout(refreshDateLayer, 60*1000); // each minute
 //#endregion
+
+$('#adsCarousel').carousel({
+    interval: 2000
+  });

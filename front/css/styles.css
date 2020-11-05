@@ -46,4 +46,8 @@ body > .container > .row > .col {
   width: 100%;
   z-index: 1;
 }
+
+.carousel-indicators li {
+  cursor: pointer;
+}
 /*# sourceMappingURL=styles.css.map */
