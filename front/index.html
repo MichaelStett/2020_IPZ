@@ -170,16 +170,16 @@ function wyswietlDane()
 
   var dzienTygodnia = data.getDay();
   switch(dzienTygodnia){
-    case 0: dzienTygodnia = "niedziela"; break;
-    case 1: dzienTygodnia = "poniedzialek"; break;
-    case 2: dzienTygodnia = "wtorek"; break;
-    case 3: dzienTygodnia = "sroda"; break;
-    case 4: dzienTygodnia = "czwartek"; break;
-    case 5: dzienTygodnia = "piatek"; break;
-    case 6: dzienTygodnia = "sobota"; break;
+    case 0: dzienTygodnia = "Sunday"; break;
+    case 1: dzienTygodnia = "Monday"; break;
+    case 2: dzienTygodnia = "Tuesday"; break;
+    case 3: dzienTygodnia = "Wednesday"; break;
+    case 4: dzienTygodnia = "Thursday"; break;
+    case 5: dzienTygodnia = "Friday"; break;
+    case 6: dzienTygodnia = "Saturday"; break;
   }
 
-  var tekst = "Dzis jest " + dzienTygodnia + ", " + dzisiaj;
+  var tekst = "Today is " + dzienTygodnia + ", " + dzisiaj;
   tekst += "<BR>";
   tekst += czas;
   document.getElementById("dataLayer").innerHTML = tekst;
