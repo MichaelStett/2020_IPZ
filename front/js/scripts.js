@@ -157,4 +157,3 @@ function refreshDateLayer() {
 //$('#adsCarousel').carousel({
 //    interval: 2000
 //});
-
