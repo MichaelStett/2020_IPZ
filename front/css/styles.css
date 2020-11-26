@@ -68,7 +68,3 @@ body > .container > .row > .col {
 .carousel-indicators li {
   cursor: pointer;
 }
-
-.modal-content{
-  color: black;
-}
