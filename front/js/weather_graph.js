@@ -27,13 +27,13 @@
         let days = []
 
         forecast.daily.forEach(day => { 
-            days.push({ name: day.weather[0].main, min: day.temp.min, max: day.temp.max });
+            days.push({ name: day.weather[0].main, min: day.temp.min, max: day.temp.max, icon: day.weather[0].icon});
         })
     
         let dataPoints = [];
     
         [...Array(7).keys()].forEach(i => {
-            dataPoints.push({ label: daysOfWeek[i], y: [days[i].min, days[i].max], name: days[i].name})
+            dataPoints.push({ label: daysOfWeek[i], y: [days[i].min, days[i].max], name: days[i].name, icon: days[i].icon})
         })
 
         return dataPoints;
@@ -66,12 +66,12 @@
             },
             toolTip:{
                 shared: true,
-                content: "{name} </br> <strong>Temperature: </strong> </br> Min: {y[0]} °C, Max: {y[1]} °C"
+                content: "{name} </br> Min: {y[0]} °C, Max: {y[1]} °C"
             },
             data: [{
                 type: "rangeSplineArea",
                 fillOpacity: 0.1,
-                color: "#91AAB1",
+                color: "#EC6E4C",
                 indexLabelFormatter: formatter,
                 dataPoints: dataPoints,
             }]
@@ -84,21 +84,13 @@
         addImages(chart);
         
         function addImages(chart) {
-            for(var i = 0; i < chart.data[0].dataPoints.length; i++){
+            for(var i = 0; i < chart.data[0].dataPoints.length; i++) {
                 var dpsName = chart.data[0].dataPoints[i].name;
 
-                if(dpsName == "Clouds") {
-                    images.push($("<img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/cloudy.png"));
-                }
-                
-                if (dpsName == "Rain") {
-                    images.push($("<img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/rainy.png"));
-                }
-                
-                if (dpsName == "Sunny") {
-                    images.push($("<img>").attr("src", "https://canvasjs.com/wp-content/uploads/images/gallery/gallery-overview/sunny.png"));
-                }
-        
+                var icon = chart.data[0].dataPoints[i].icon;
+
+                images.push($("<img>").attr("src", `http://openweathermap.org/img/wn/${icon}@2x.png`));
+
                 images[i].attr("class", dpsName).appendTo($("#chartContainer>.canvasjs-chart-container"));
                 positionImage(images[i], i);
             }
@@ -132,8 +124,4 @@
                 }                
             }
         });
-        
-       
-
     })
-
