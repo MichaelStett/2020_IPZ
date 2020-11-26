@@ -8,6 +8,8 @@ const map = new LeafletMap(api, "e97c7311758c0dc6edec263d72155863");
 const dt = new DateTime();
 const chart = new WeatherChart(map, api, dt);
 
+chart.create();
+
 setInterval(dt.refreshDateLayer, 1000);
 
 // Permissions
@@ -18,7 +20,7 @@ getLocationButton.addEventListener("click", navigator.geolocation.getCurrentPosi
 
 removeMarkersButton.addEventListener("click", map.removeAllMarkers);
 
-const test = async () => {
+const getWeatherForSearchedCity = async () => {
     let cityName = searchInput.value;
 
         if (cityName.length >= 3) {
@@ -59,11 +61,4 @@ const test = async () => {
         }
 }
 
-getWeatherButton.addEventListener("click", test);
-
-searchInput.addEventListener('keypress', async (event) => {
-    if(event.code === 'Enter') {
-        test();
-    }
-});
-
+getWeatherButton.addEventListener("click", getWeatherForSearchedCity);

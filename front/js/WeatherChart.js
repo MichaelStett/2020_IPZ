@@ -3,8 +3,6 @@ const WeatherChart = class {
         this.leafltetMap = leafltetMap;
         this.weatherApi = weatherApi;
         this.dateTime = dateTime;
-
-        this.create();
     }
 
     create = async () => {
@@ -39,10 +37,12 @@ const WeatherChart = class {
         chart.render();
 
         // add Images to chart
-        chart.data[0].dataPoints.forEach((dataPoint, i)=> {
+        chart.data[0].dataPoints.forEach(dataPoint => {
             let { name, icon } = dataPoint;
 
             let image = $("<img>").attr("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+
+            image.attr("class", name);
 
             image.appendTo($("#weatherChart>.canvasjs-chart-container"));
 
@@ -60,13 +60,24 @@ const WeatherChart = class {
         })
 
         $( window ).resize(function() {
-            var cloudyCounter = 0, rainyCounter = 0, sunnyCounter = 0;    
-            var imageCenter = 0;
-            for(var i = 0; i < chart.data[0].dataPoints.length; i++) {
-                imageCenter = chart.axisX[0].convertValueToPixel(chart.data[0].dataPoints[i].x) - 20;
 
-                // TODO: resizing images            
-            }})
+            // all possible weather conditions
+            let counters = {
+                "Clouds": 0,
+                "Clear": 0,
+                "Atmosphere": 0,
+                "Snow": 0,
+                "Rain": 0,
+                "Drizzle": 0,
+                "Thunderstorm": 0,
+            }
+
+            chart.data[0].dataPoints.forEach(dataPoint => { 
+                let imageCenter = chart.axisX[0].convertValueToPixel(dataPoint.x) - 20;
+
+                $(`.${dataPoint.name}`).eq(counters[dataPoint.name]++).css({ "left": imageCenter});  
+            });
+        })
     }
 
     _getDataPoints = async () => {

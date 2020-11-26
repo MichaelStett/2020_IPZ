@@ -4,7 +4,7 @@ const DateTime = class {
     refreshDateLayer = () => {
         let date = new Date();
     
-        let language  = "en-EN";
+        let language = "en-EN";
         
         let todayDate = date.toLocaleDateString(language, { year: 'numeric', month: 'long', day: 'numeric' })
     
@@ -31,10 +31,6 @@ const DateTime = class {
 
         return daysOfWeek;
     }
-
-   
 }
-    
-
 
 export { DateTime }
