@@ -72,3 +72,11 @@ body > .container > .row > .col {
 .modal-content{
   color: black;
 }
+
+.canvasjs-chart-credit {
+  display: none;
+}
+
+.canvasjs-chart-toolbar {
+  display: none;
+}
