@@ -8,18 +8,28 @@ let latitude = 52.2297;
 let longitude = 21.0122;
 
 let map = L.map('mapid').setView([latitude, longitude], 12);
+let mapboxUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+L.tileLayer(mapboxUrl, {
         maxZoom: 20,
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: access_token
+        accessToken: access_token,
+        layers: [precipitation, clouds, temperature]
 }).addTo(map);
 
-L.tileLayer('https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={apiKey}', {
-    apiKey: api_key
-}).addTo(map);
+var precipitation = L.tileLayer('https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={apiKey}', {apiKey: api_key}),
+    clouds   = L.tileLayer('https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid={apiKey}', {apiKey: api_key}),
+    temperature   = L.tileLayer('https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid={apiKey}', {apiKey: api_key});
+
+var baseMaps = {
+    "Precipitation": precipitation,
+    "Clouds": clouds,
+    "Temperature": temperature
+};
+
+L.control.layers(baseMaps).addTo(map);
 
 
 let markers = [];
