@@ -3,6 +3,7 @@ import { getWeather } from './weatherapi.js';
 //#region Location
 
 const access_token = "pk.eyJ1IjoibWljaGFlbHN0ZXR0IiwiYSI6ImNrZ3R3dW9vdzExbm8ycW1mMWRiZDZwMXQifQ.PjXKXl0zpEcJ88JyhuT-yQ";
+const api_key = "e97c7311758c0dc6edec263d72155863"
 
 // https://leafletjs.com/reference-1.7.1.html
 let latitude = 52.2297;
@@ -16,6 +17,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
         tileSize: 512,
         zoomOffset: -1,
         accessToken: access_token
+}).addTo(map);
+
+L.tileLayer('https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={apiKey}', {
+    apiKey: api_key
 }).addTo(map);
 
 
@@ -139,6 +144,7 @@ function refreshDateLayer() {
   setTimeout(refreshDateLayer, 60*1000); // each minute
 //#endregion
 
-// $('#adsCarousel').carousel({
-//     interval: 2000
-//   });
+//$('#adsCarousel').carousel({
+//    interval: 2000
+//});
+
