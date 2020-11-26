@@ -1,9 +1,6 @@
-import { getWeather } from './weatherapi.js';
-
 //#region Location
 
 const access_token = "pk.eyJ1IjoibWljaGFlbHN0ZXR0IiwiYSI6ImNrZ3R3dW9vdzExbm8ycW1mMWRiZDZwMXQifQ.PjXKXl0zpEcJ88JyhuT-yQ";
-const api_key = "e97c7311758c0dc6edec263d72155863"
 
 // https://leafletjs.com/reference-1.7.1.html
 let latitude = 52.2297;
@@ -17,10 +14,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
         tileSize: 512,
         zoomOffset: -1,
         accessToken: access_token
-}).addTo(map);
-
-L.tileLayer('https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid={apiKey}', {
-    apiKey: api_key
 }).addTo(map);
 
 
@@ -74,18 +67,7 @@ function refreshMapLocation(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
 
-    let data = getWeather(latitude, longitude, 1);
-    
-    data.then(d => {
-        if (d) {
-            console.log(d)
-
-            let item = d.list[0]; 
-
-            currentLocation.innerText = `${item.name}: ${latitude}, ${longitude}`;
-            currentTemperature.innerText = `${item.weather[0].main} - High: ${item.main.temp_max}°C Low: ${item.main.temp_min}°C`;
-        }
-    })
+    currentLocation.innerText = `${latitude}, ${longitude}`;
 
     map.setView([latitude, longitude]);
     
@@ -128,8 +110,8 @@ removeMarkers.addEventListener("click", _ => {
 function refreshDateLayer() {
     let date = new Date();
 
-    let language  = "en-EN";
-    
+    let { language } = window.navigator;
+
     let todayDate = date.toLocaleDateString(language, { year: 'numeric', month: 'long', day: 'numeric' })
 
     let dayOfWeek = date.toLocaleString(language, { weekday: 'long' })
@@ -144,7 +126,6 @@ function refreshDateLayer() {
   setTimeout(refreshDateLayer, 60*1000); // each minute
 //#endregion
 
-//$('#adsCarousel').carousel({
-//    interval: 2000
-//});
-
+$('#adsCarousel').carousel({
+    interval: 2000
+  });
