@@ -1,0 +1,54 @@
+
+.app-main {
+    width: 50vh;
+    margin: 100px auto;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+.input-box {
+    width: 100%;
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+    height: 50px;
+    border-radius: 5px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.input-box:focus {
+    background-color: white;
+}
+
+
+.weather-body {
+    color: black;
+
+    
+    height: 50vh;
+}
+
+
+.location-details {
+    font-weight: black;
+}
+
+.weather-status {
+    padding: 20px;
+}
+
+.temperature {
+    font-size: 50pt;
+    font-weight: 700;
+    margin: 20px 0;
+   
+}
+
+.description, .windspeed {
+    font-size: 12pt;
+    font-weight: 600;
+}
