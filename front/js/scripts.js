@@ -1,3 +1,5 @@
+import { getWeather } from './weatherapi.js';
+
 //#region Location
 
 const access_token = "pk.eyJ1IjoibWljaGFlbHN0ZXR0IiwiYSI6ImNrZ3R3dW9vdzExbm8ycW1mMWRiZDZwMXQifQ.PjXKXl0zpEcJ88JyhuT-yQ";
@@ -72,7 +74,18 @@ function refreshMapLocation(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
 
-    currentLocation.innerText = `${latitude}, ${longitude}`;
+    let data = getWeather(latitude, longitude, 1);
+    
+    data.then(d => {
+        if (d) {
+            console.log(d)
+
+            let item = d.list[0]; 
+
+            currentLocation.innerText = `${item.name}: ${latitude}, ${longitude}`;
+            currentTemperature.innerText = `${item.weather[0].main} - High: ${item.main.temp_max}°C Low: ${item.main.temp_min}°C`;
+        }
+    })
 
     map.setView([latitude, longitude]);
     
@@ -115,8 +128,8 @@ removeMarkers.addEventListener("click", _ => {
 function refreshDateLayer() {
     let date = new Date();
 
-    let { language } = window.navigator;
-
+    let language  = "en-EN";
+    
     let todayDate = date.toLocaleDateString(language, { year: 'numeric', month: 'long', day: 'numeric' })
 
     let dayOfWeek = date.toLocaleString(language, { weekday: 'long' })
@@ -131,7 +144,7 @@ function refreshDateLayer() {
   setTimeout(refreshDateLayer, 60*1000); // each minute
 //#endregion
 
-$('#adsCarousel').carousel({
-    interval: 2000
-  });
-  
+//$('#adsCarousel').carousel({
+//    interval: 2000
+//});
+
