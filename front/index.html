@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<link rel="stylesheet" href="css/styletop.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="icon" type="image/jpeg" href="img/favicon.png">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	<!--      -->
 	 <link rel="stylesheet" href="css/style.css" />
-	<link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-    />
+	
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -26,6 +27,23 @@
 	crossorigin=""></script>
 
 	<link rel="stylesheet" href="css/styles.css">
+	
+	
+	<!--    -->
+	    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		#map {
+			width: 600px;
+			height: 400px;
+		}
+	</style>
 </head>
 <body>
 <header class="position-sticky">
@@ -56,8 +74,29 @@
 	<div class="row">
 		<div class="col font-weight-bold" id="dataLayer"></div>
 	</div>
-	
-	
+	<!--    --> 
+	<div class="app-main">
+        <div class="searchInputBox">
+            <input type="text" id="input-box" class="input-box" placeholder="Enter City Name..." autocomplete="off">
+        </div>
+
+        <div class="weather-body">
+            <div class="location-details">
+                <div class="city" id="city">City</div>
+                <div class="date"id="date">Date (Day), Year</div>      
+            </div>
+
+            <div class="weather-status">
+                <div class="temperature" id="temperature">Temp&deg;C</div>
+                <div class="description" id="description">NA</div>
+                <div class="windspeed" id="windspeed">Wind Speed</div>
+            </div>      
+        </div>
+    </div>
+	<!--   
+<iframe src="https://www.rainviewer.com/map.html" title="Weather radar"
+width="1000" height="500"></iframe>
+ --> 	
 	<div class="row">
 		<div class="col">
 			<h5>My location</h5>
@@ -86,7 +125,8 @@
 			</div>
 		</div>
 	</div>
-	
+
+
 	<div class="row">
 		<div class="col">
 			<h5>Ads</h5>
@@ -95,11 +135,13 @@
 					<li data-target="#adsCarousel" data-slide-to="0" class="active"></li>
 					<li data-target="#adsCarousel" data-slide-to="1"></li>
 					<li data-target="#adsCarousel" data-slide-to="2"></li>
+					<li data-target="#adsCarousel" data-slide-to="3"></li>
 				</ol>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img class="d-block w-100 h-50" src="img/Jacket_Ad.png" alt=" First slide">
 						<div class="carousel-caption d-none d-md-block">
+						    
 							<h5>Jacket DESIGN </h5>
 							<p>Smooth woven fabric with synthetic filling for lightweight warmth. Made with recycled polyester. Plastic bottles and textile waste are processed into plastic chips and melted into new fibres. This saves water and energy and reduces greenhouse-gas emissions! </p>
 						</div>
@@ -118,9 +160,9 @@
 							<p>Designed and crafted in Italy. Crystal-tempered sunglass lenses provide protection with distortion-free vision. With a brand character that can best be described as classy, exclusive, stylish, and unique, SUNNY continues to go beyond trends. </p>
 						</div>
 					  </div>
-				</div>
+				
 				<div class="carousel-item">
-						<img class="d-block w-100 h-50" src="img/WateringCan_Ad.png" alt="Fourth slide">
+						<img class="d-block w-100 h-50" src="img/Watering.png" alt="Fourth slide">
 						<div class="carousel-caption d-none d-md-block">
 							<h5>Watering Can CONNY</h5>
 							<p>CONNY watering can is a trusted solution designed mainly for gardening activities. With a removable sieve. The large handle increases the comfort of use. Resistant to mechanical damage and UV-light.  Available in 2 sizes – with capacity of 1.8 and 4.5 litre – and 4 colour options.  </p>
@@ -214,5 +256,7 @@
 <script src="js/scripts.js"></script>
 <!-- fb pinterest itd. -->
 <script src="js/main.js"></script>
+<script src="js/app.js"></script>
+<script src="js/map.js"></script>
 </body>
 </html>
