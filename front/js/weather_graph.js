@@ -9,12 +9,10 @@
     
         var date = new Date();
     
-        let { language } = window.navigator;
-    
         let daysOfWeek = [];
     
         [...Array(7).keys()].forEach(i => {
-             daysOfWeek.push(date.addDays(i).toLocaleString(language, { weekday: 'long' }))
+             daysOfWeek.push(date.addDays(i).toLocaleString("en-EN", { weekday: 'long' }))
         })
     
         let lat = 52.2297;

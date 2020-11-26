@@ -123,8 +123,8 @@ removeMarkers.addEventListener("click", _ => {
 function refreshDateLayer() {
     let date = new Date();
 
-    let { language } = window.navigator;
-
+    let language  = "en-EN";
+    
     let todayDate = date.toLocaleDateString(language, { year: 'numeric', month: 'long', day: 'numeric' })
 
     let dayOfWeek = date.toLocaleString(language, { weekday: 'long' })
