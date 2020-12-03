@@ -1,3 +1,14 @@
+<!-- 
+POBRAĆ ROZSZERZENIE DO VSCODE -> PPM -> (Reload Server)
+
+Name: PHP Server
+Id: brapifra.phpserver
+Description: Serve your Project with PHP
+Version: 3.0.1
+Publisher: brapifra
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -188,19 +199,21 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form class="modal-body mx-3">
+				<form class="modal-body mx-3" id="login-form" method="post" action="auth.php">
 					<div class="md-form mb-4">
-						<label data-error="wrong" data-success="right" for="defaultForm-email">E-mail</label>
-						<input type="email" id="defaultForm-email" class="form-control validate">
+						<label data-error="wrong" data-success="right" for="user_name">name</label>
+						<input type="text" id="user_name" name="user_name" class="form-control validate">
 					</div>
 					<div class="md-form mb-4">
-						<label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-						<input type="password" id="defaultForm-pass" class="form-control validate" autocomplete="on">
+						<label data-error="wrong" data-success="right" for="user_password">Password</label>
+						<input type="password" id="user_password" name="user_password" class="form-control validate" autocomplete="on">
+					</div>
+					<div class="modal-footer d-flex justify-content-left">
+						<button class="btn btn-default btn-primary" type="Submit">Login</button>
+						<button class="btn btn-default" type="reset">Reset</button>
 					</div>
 				</form>
-				<div class="modal-footer d-flex justify-content-center">
-					<button class="btn btn-default">Login</button>
-				</div>
+				
 			</div>
 		</div>
 	</div>
