@@ -1,23 +1,50 @@
-const baseURL = "http://api.openweathermap.org";
-const apiKey = "44b1ea7b49afd0114a09932f574d54eb";
+const WeatherApi = class {
+    constructor(apiKey) {
+        WeatherApi.suffix = `&appid=${apiKey}&units=metric`
+    }
 
-const getWeather = async (lat, lon, cnt) => {
-    let endpoint = `/data/2.5/find?lat=${lat}&lon=${lon}&cnt=${cnt}&appid=${apiKey}&units=metric`;
+    // const~
+    static get baseURL() { return "https://api.openweathermap.org/data/2.5/" };
 
-    console.log(baseURL + endpoint)
+    getWeatherByName = async (cityName) => {
+        let endpoint = `weather?q=${cityName}`;
 
-    let response = await fetch(baseURL + endpoint);
-    
-    return await response.json();
+        let url = WeatherApi.baseURL + endpoint + WeatherApi.suffix;
+
+        let response = await fetch(url);
+
+        return await response.json();
+    }
+
+    getForecastByName = async (cityName) => {
+        let endpoint = `forecast?q=${cityName}`;
+
+        let url = WeatherApi.baseURL + endpoint + WeatherApi.suffix;
+
+        let response = await fetch(url);
+
+        return await response.json();
+    }
+
+    getWeekForecast = async (lat, lon) => {
+        let endpoint = `onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely`;
+        
+        let url = WeatherApi.baseURL + endpoint + WeatherApi.suffix;
+        
+        let response = await fetch(url);
+        
+        return await response.json();
+    }
+
+    getWeatherByPosition = async (lat, lon) => {
+        let endpoint = `weather?lat=${lat}&lon=${lon}`;
+
+        let url = WeatherApi.baseURL + endpoint + WeatherApi.suffix;
+
+        let response = await fetch(url);
+
+        return await response.json();
+    }
 }
 
-const getWeekForecast = async (lat, lon) => {
-    let endpoint = `/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&appid=${apiKey}&units=metric`
-    
-    console.log(baseURL + endpoint)
-    let response = await fetch(baseURL + endpoint);
-    
-    return await response.json();
-};
-
-export { getWeather, getWeekForecast };
+export { WeatherApi };
