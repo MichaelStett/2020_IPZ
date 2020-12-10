@@ -25,6 +25,11 @@ const getWeatherForSearchedCity = async () => {
 
         if (cityName.length >= 3) {
             let data = await api.getWeatherByName(cityName);
+            // Centering map on searched city
+            map.map.setView([data.coord.lat, data.coord.lon]);
+            //
+            // chart.options.data[0].dataPoints = 
+
 
             let currentWeather = { 
                 cityName: cityName, 
@@ -59,6 +64,7 @@ const getWeatherForSearchedCity = async () => {
             searchedWeather.innerHTML = '';
             searchedWeather.appendChild(currentWeatherElement);
         }
+
 }
 
 getWeatherButton.addEventListener("click", getWeatherForSearchedCity);
