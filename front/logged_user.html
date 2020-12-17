@@ -29,7 +29,7 @@
 		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 		crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/logged_styles.css">
 </head>
 
 <body>
@@ -75,8 +75,20 @@
 		</div>
 
 		<div class="row">
+			<div class="col" id="searchedWeather"></div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<h5>My location</h5>
+				<p id="currentLocation"></p>
+				<button type="button" class="btn btn-primary" id="getLocationButton">Get current location</button>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-md-6">
-				<div class="col-md-12" id="searchedWeather">
+				<div class="col-md-12">
 					<img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 100px; height: 100px;" alt="Clouds">
                     <div>
                         <h5>Barcelona</h5> 
@@ -85,31 +97,76 @@
                                 <p><strong>11.29°C</strong>
                                 but feels like: 6.8°C</p>
                             </div>
+                        <p></p>
 						<p><small>Humidity: 62% | Pressure: 1006hPA</small></p>
+						<p></p>
                         <p><small>Wind: 13 km/h | Air Quality: Moderate</small></p>
                     </div>
             	</div>
 			</div>
 			<div class="col-md-3">
 				<div class="row">
-					<div class="col-md-12" id="weather_0"></div>
-					<div class="col-md-12" id="weather_1"></div>
+					<div class="col-md-12">
+						<img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
+						<div>
+							<h5>Barcelona</h5> 
+							<p>
+								</p><div>
+									<p><strong>11.29°C</strong>
+									but feels like: 6.8°C</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
+						<div>
+							<h5>Barcelona</h5> 
+							<p>
+								</p><div>
+									<p><strong>11.29°C</strong>
+									but feels like: 6.8°C</p>
+								</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="row">
-					<div class="col-md-12" id="weather_2"></div>
-					<div class="col-md-12" id="weather_3"></div>
+					<div class="col-md-12">
+						<img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
+						<div>
+							<h5>Barcelona</h5> 
+							<p>
+								</p><div>
+									<p><strong>11.29°C</strong>
+									but feels like: 6.8°C</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
+						<div>
+							<h5>Barcelona</h5> 
+							<p>
+								</p><div>
+									<p><strong>11.29°C</strong>
+									but feels like: 6.8°C</p>
+								</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col">
+			<div class="col-md-9" id="map_col">
 				<h5>Map</h5>
 				<div id="map-wrapper">
 					<div id="mapid"></div>
 				</div>
+			</div>
+			<div class="col-md-3" id="ad_col">
+				<h5>Ad</h5>
 			</div>
 		</div>
 
