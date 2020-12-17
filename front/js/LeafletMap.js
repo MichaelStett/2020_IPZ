@@ -28,23 +28,7 @@ const LeafletMap = class {
             zoomOffset: -1,
             layers: [precipitation, clouds, temperature]
         }).addTo(this.map);
-    }
 
-    refreshLocation = async (position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-    
-        let data = await this.weatherApi.getWeatherByPosition(this.latitude, this.longitude)
-        
-        if (data) {
-            currentLocation.innerText = `${data.name}: ${this.latitude}, ${this.longitude}`;
-            // currentTemperature.innerText = `${data.weather[0].main} - High: ${data.main.temp_max}°C Low: ${data.main.temp_min}°C`;
-        }
-    
-        this.map.setView([this.latitude, this.longitude]);
-        
-        this.map.locate({ setView: true, maxZoom: 16 });
-    
         this.map.on('locationfound', e => {
             // TODO? : customize popup -> https://leafletjs.com/reference-1.0.3.html#popup
             let radius = e.accuracy;
@@ -83,6 +67,17 @@ const LeafletMap = class {
         
             this.markers.push(marker);
         });
+
+        this.map.locate({ setView: true, maxZoom: 16 });
+    }
+
+    refreshCoords = async (position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+    }
+
+    refreshMap = async () => {
+        this.map.setView([this.latitude, this.longitude]);
     }
 
     removeAllMarkers = () => {
