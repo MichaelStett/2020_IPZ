@@ -14,10 +14,9 @@ setInterval(dt.refreshDateLayer, 1000);
 
 // Permissions
 navigator.permissions.query({ name: 'geolocation' })
+navigator.geolocation.getCurrentPosition(map.refreshMap)
 
 // Listeners
-getLocationButton.addEventListener("click", navigator.geolocation.getCurrentPosition(map.refreshLocation))
-
 removeMarkersButton.addEventListener("click", map.removeAllMarkers);
 
 const getWeatherForSearchedCity = async () => {
@@ -25,6 +24,7 @@ const getWeatherForSearchedCity = async () => {
 
         if (cityName.length >= 3) {
             let data = await api.getWeatherByName(cityName);
+
 
             let currentWeather = { 
                 cityName: cityName, 
@@ -37,7 +37,9 @@ const getWeatherForSearchedCity = async () => {
                     feelsLike: data.main.feels_like
                 },
                 humidity: data.main.humidity,
-                pressure: data.main.pressure
+                pressure: data.main.pressure,
+                latitude: data.coord.lat,
+                longitude: data.coord.lon
             };
 
             let currentWeatherElement = document.createElement("div");
@@ -56,9 +58,24 @@ const getWeatherForSearchedCity = async () => {
                     </div>
             `
 
+            searchedWeather.hidden = false;
             searchedWeather.innerHTML = '';
             searchedWeather.appendChild(currentWeatherElement);
+
+            await map.refreshCoords({ 'coords': {
+                'latitude': currentWeather.latitude,
+                'longitude': currentWeather.longitude
+            }})
+
+            await map.refreshMap()
+
+            chart.create();
         }
 }
+
+searchInput.addEventListener('keyup', ({key}) => {
+    if (key === "Enter") 
+        getWeatherForSearchedCity()
+})
 
 getWeatherButton.addEventListener("click", getWeatherForSearchedCity);
