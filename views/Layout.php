@@ -7,8 +7,6 @@ class Layout
     public static function header($params = [])
     {
         ob_start();
-        $userType = $params['userType'];
-
         ?>
         <!DOCTYPE html>
         <html>
@@ -59,7 +57,7 @@ class Layout
 
         <body>
 
-        <?= self::navbar(['userType' => $params['userType']])  ?>
+        <?= self::navbar($params)  ?>
 
 
         <?php
@@ -119,109 +117,62 @@ class Layout
         $userType = $params['userType'];
 
         ob_start();
+        ?>
+        <link rel="stylesheet" href="./front/css/styles.css">
 
+        <header class="position-sticky">
+            <nav class="navbar navbar-expand-lg sticky-top">
+                <a class="navbar-brand" href="#"><img src="./front/img/Logo.png"></i> AppName</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto"></ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./index.php?action=main">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                <?php
                 switch ($userType) {
                     case "guest":
                         ?>
-                        <link rel="stylesheet" href="./front/css/styles.css">
-
-                        <header class="position-sticky">
-                            <nav class="navbar navbar-expand-lg sticky-top">
-                                <a class="navbar-brand" href="#"><img src="./front/img/Logo.png"></i> AppName</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarText">
-                                    <ul class="navbar-nav mr-auto"></ul>
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">About us</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">
-                                                Login
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </header>
+                        <li class="nav-item">
+                            <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">
+                                Login
+                            </a>
+                        </li>
                         <?php
                         break;
-
                     case "user":
                         ?>
-                        <link rel="stylesheet" href="./front/css/logged_styles.css">
-
-                        <header class="position-sticky">
-                            <nav class="navbar navbar-expand-lg sticky-top">
-                                <a class="navbar-brand" href="#"><img src="./front/img/Logo.png"></i> AppName</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarText">
-                                    <ul class="navbar-nav mr-auto"></ul>
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">About us</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="" class="nav-link">
-                                                Logout
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </header>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                Logout
+                            </a>
+                        </li>
                         <?php
                         break;
-
                     case "admin":
                         ?>
-                        <link rel="stylesheet" href="./front/css/styles.css">
-
-                        <header class="position-sticky">
-                            <nav class="navbar navbar-expand-lg sticky-top">
-                                <a class="navbar-brand" href="#"><img src="./front/img/Logo.png"></i> AppName</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-                                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarText">
-                                    <ul class="navbar-nav mr-auto"></ul>
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Users</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="" class="nav-link">Ads</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </header>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Ads</a>
+                        </li>
                         <?php
                         break;
-
                     default:
                         ?>
-
                         <?php
                         break;
                 }
                 ?>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
             </div>
         </nav>
         <?php
@@ -230,5 +181,4 @@ class Layout
         return $html;
     }
 
-    }
-    ?>
+}

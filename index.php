@@ -6,15 +6,12 @@ session_start();
 
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 
-//$loginController = new LoginController(new UserRepository());
-//$userController = new UserController(new UserRepository());
-
 switch ($action) {
     case 'main':
         echo GuestView::render();
         break;
     case 'admin':
-        echo AdminUsersView::render();
+        echo AdminUsersView::render((new UserRepository())->getAll());
         break;
     case 'user':
         echo UserView::render();
