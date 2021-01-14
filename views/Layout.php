@@ -58,7 +58,11 @@ class Layout
         </head>
 
         <body>
+<<<<<<< Updated upstream
         <? self::navbar($userType); ?>
+=======
+        <?= self::navbar(['userType' => $params['userType']])  ?>
+>>>>>>> Stashed changes
 
         <?php
         $html = ob_get_clean();
