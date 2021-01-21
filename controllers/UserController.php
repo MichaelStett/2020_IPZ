@@ -12,6 +12,8 @@ class UserController
 
     public function getAll() {
         $users = $this->_repo->getAll();
+
+        return json_encode($users);
     }
 
     public function getById($id) {
