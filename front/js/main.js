@@ -10,7 +10,8 @@ const dt = new DateTime();
 const chart = new WeatherChart(map, api, dt);
 const grid = new WeatherGrid(api);
 
-["London", "Madrid", "Paris", "Berlin"].forEach(async (cityName, index) => await grid.create(cityName, index))
+
+["London", "Madrid", "Paris", "Berlin"].forEach(async (cityName, index) => await grid.createDefault(cityName, index))
 
 chart.create();
 
@@ -24,11 +25,16 @@ navigator.geolocation.getCurrentPosition(map.refreshMap)
 removeMarkersButton.addEventListener("click", map.removeAllMarkers);
 
 const getWeatherForSearchedCity = async () => {
-    let cityName = searchInput.value;
+
+    if (searchInput.value === ""){
+        var cityName = "Barcelona";
+    } else {
+        var cityName = searchInput.value;
+    }
 
     if (cityName.length >= 3) {
         let data = await api.getWeatherByName(cityName);
-
+        console.log(data);
         let currentWeather = { 
             cityName: cityName, 
             icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
@@ -39,6 +45,8 @@ const getWeatherForSearchedCity = async () => {
                 max: data.main.temp_max,
                 feelsLike: data.main.feels_like
             },
+            wind: data.wind.speed,
+            cloudiness: data.clouds.all,
             humidity: data.main.humidity,
             pressure: data.main.pressure,
             latitude: data.coord.lat,
@@ -58,7 +66,7 @@ const getWeatherForSearchedCity = async () => {
                         </div>
                     </p>
                     <p><small>Humidity: ${currentWeather.humidity}% Pressure: ${currentWeather.pressure}hPA</small></p>
-                    <p><small>Wind: 13 km/h | Air Quality: Moderate</small></p>
+                    <p><small>Wind: ${currentWeather.wind} km/h | Cloudiness: ${currentWeather.cloudiness}%</small></p>
                 </div>
         `
 
@@ -76,6 +84,8 @@ const getWeatherForSearchedCity = async () => {
         chart.create();
     }
 }
+
+document.addEventListener('DOMContentLoaded', getWeatherForSearchedCity());
 
 searchInput.addEventListener('keyup', ({key}) => {
     if (key === "Enter") 

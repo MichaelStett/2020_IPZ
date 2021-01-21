@@ -122,3 +122,6 @@ body > .container > .row > #ad_col{
   display: none;
 }
 
+#searchedWeather {
+  margin-top: 4rem;
+}

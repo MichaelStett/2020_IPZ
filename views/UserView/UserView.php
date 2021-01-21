@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
 
+$_COOKIE['uid'] = 2;
+
 class UserView
 {
     public static function render()
@@ -20,7 +22,10 @@ class UserView
                     <div class="input-group-append">
                         <button type="button" class="btn btn-primary" id="getWeatherButton"><i class="fas fa-search"></i>
                             Get Weather</button>
+                        <button type="button" class="btn btn-secondary" id="addCity"><i class="fas fa-plus"></i>
+                            Add To Favourites</button>
                     </div>
+
                 </div>
             </div>
 
@@ -36,70 +41,18 @@ class UserView
                 <div class="col-md-6">
                     <div class="col-md-12" id="searchedWeather">
                         <img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 100px; height: 100px;" alt="Clouds">
-                        <div>
-                            <h5>Barcelona</h5>
-                            <p>
-                            </p><div>
-                                <p><strong>11.29°C</strong>
-                                    but feels like: 6.8°C</p>
-                            </div>
-                            <p></p>
-                            <p><small>Humidity: 62% | Pressure: 1006hPA</small></p>
-                            <p></p>
-                            <p><small>Wind: 13 km/h | Air Quality: Moderate</small></p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="row">
-                        <div class="col-md-12">
-                            <img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
-                            <div>
-                                <h5>Barcelona</h5>
-                                <p>
-                                </p><div>
-                                    <p><strong>11.29°C</strong>
-                                        but feels like: 6.8°C</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
-                            <div>
-                                <h5>Barcelona</h5>
-                                <p>
-                                </p><div>
-                                    <p><strong>11.29°C</strong>
-                                        but feels like: 6.8°C</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-md-12" id="weather_0"></div>
+                        <div class="col-md-12" id="weather_1"></div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="row">
-                        <div class="col-md-12">
-                            <img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
-                            <div>
-                                <h5>Barcelona</h5>
-                                <p>
-                                </p><div>
-                                    <p><strong>11.29°C</strong>
-                                        but feels like: 6.8°C</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 50px; height: 50px;" alt="Clouds">
-                            <div>
-                                <h5>Barcelona</h5>
-                                <p>
-                                </p><div>
-                                    <p><strong>11.29°C</strong>
-                                        but feels like: 6.8°C</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-md-12" id="weather_2"></div>
+                        <div class="col-md-12" id="weather_3"></div>
                     </div>
                 </div>
             </div>
@@ -194,6 +147,24 @@ class UserView
         </div>
 
         <?= Layout::footer() ?>
+        <?php
+        $weather = new WeatherRepository();
+        $id = $_COOKIE['uid'];
+        $array = $weather->getCitynames($id);?>
+
+        <script type="module">
+            import { WeatherApi } from './front/js/WeatherApi.js';
+            import { WeatherGrid } from './front/js/WeatherGrid.js';
+
+            const api = new WeatherApi("7ded80d91f2b280ec979100cc8bbba94");
+            const grid = new WeatherGrid(api);
+
+            let jArray = <?php echo json_encode($array); ?>;
+
+            jArray.forEach(async (cityName, index) => await grid.create(cityName, index))
+            console.log("Siema");
+        </script>
+
         <?php
         $html = ob_get_clean();
         return $html;
