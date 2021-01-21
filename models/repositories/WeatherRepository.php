@@ -12,6 +12,7 @@ class WeatherRepository
         $this->pdo = new PDO($config['dsn'], $config['login'], $config['password']);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
     }
 
     public function getCitynames($user_id)
@@ -55,7 +56,6 @@ class WeatherRepository
     {
                 $user_id = $_COOKIE['uid'];
 
-
                 $sql = "DELETE FROM weather WHERE city_name = :city_name AND user_id = :user_id";
 
                 $statement = $this->pdo->prepare($sql);
@@ -66,6 +66,5 @@ class WeatherRepository
                 $result = $statement->execute();
 
                 header('Location:index.php?action=user');
-
     }
 }
