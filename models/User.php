@@ -5,6 +5,8 @@ class User implements JsonSerializable
     private $username;
     private $firstName;
     private $lastName;
+    private $email;
+    private $status;
     private $role;
     private $password;
 
@@ -21,13 +23,15 @@ class User implements JsonSerializable
             ->setUsername($params['username'])
             ->setFirstName($params['firstName'])
             ->setLastName($params['lastName'])
+            ->setEmail($params['email'])
+            ->setStatus($params['status'])
             ->setRole($params['role']);
     }
 
     /**
      * @return mixed
      */
-    public function getId()
+    public function getId() : int
     {
         return $this->id;
     }
@@ -45,7 +49,7 @@ class User implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getUsername()
+    public function getUsername() : string
     {
         return $this->username;
     }
@@ -63,7 +67,7 @@ class User implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getFirstName()
+    public function getFirstName() : string
     {
         return $this->firstName;
     }
@@ -81,7 +85,7 @@ class User implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getLastName()
+    public function getLastName() : string
     {
         return $this->lastName;
     }
@@ -99,7 +103,44 @@ class User implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getEmail() : string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     * @return User
+     */
+    public function setEmail($email) : User
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus() : bool
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     * @return User
+     */
+    public function setStatus($status) : User
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPassword() : string
     {
         return $this->password;
     }
@@ -117,7 +158,7 @@ class User implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getRole()
+    public function getRole() : string
     {
         return $this->role;
     }
@@ -151,6 +192,8 @@ class User implements JsonSerializable
             'username' => $this->getUsername(),
             'firstName' => $this->getFirstName(),
             'lastName' => $this->getLastName(),
+            'email' => $this->getEmail(),
+            'status' => $this->getStatus(),
             'role' => $this->getRole(),
         ];
     }
