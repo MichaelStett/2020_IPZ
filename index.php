@@ -22,6 +22,9 @@ switch ($action) {
     case 'ads':
         echo AdminAdsView::render();
         break;
+    case 'login':
+        $loginController->index();
+        break;
     case 'login-set':
         $loginController->set();
         break;

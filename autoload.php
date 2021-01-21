@@ -20,3 +20,5 @@ require_once __DIR__ . '/controllers/UserController.php';
 
 # Misc
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/addFavourite.php';
+require_once __DIR__ . '/deleteFavourite.php';
