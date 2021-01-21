@@ -125,3 +125,7 @@ body > .container > .row > #ad_col{
 #searchedWeather {
   margin-top: 4rem;
 }
+
+body > .container > .row > form {
+  width: 100%;
+}
