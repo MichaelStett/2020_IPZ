@@ -57,7 +57,7 @@ class Layout
 
         <body>
 
-        <?= self::navbar($params)  ?>
+        <?= self::navbar()  ?>
 
 
         <?php
@@ -85,19 +85,19 @@ class Layout
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form class="modal-body mx-3">
+                    <form class="modal-body mx-3" action="./index.php?action=login-set" method="post">
                         <div class="md-form mb-4">
-                            <label data-error="wrong" data-success="right" for="defaultForm-email">E-mail</label>
-                            <input type="email" id="defaultForm-email" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="email">E-mail</label>
+                            <input type="email" id="email" name="email" class="form-control validate">
                         </div>
                         <div class="md-form mb-4">
-                            <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
-                            <input type="password" id="defaultForm-pass" class="form-control validate" autocomplete="on">
+                            <label data-error="wrong" data-success="right" for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control validate" autocomplete="on">
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-default" type="submit">Login</button>
                         </div>
                     </form>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-default">Login</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -112,9 +112,9 @@ class Layout
         return $html;
     }
 
-    private static function navbar($params = [])
+    private static function navbar()
     {
-        $userType = $params['userType'];
+        $userType = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 
         ob_start();
         ?>
@@ -135,36 +135,37 @@ class Layout
                         </li>
                 <?php
                 switch ($userType) {
-                    case "guest":
+                    case 'U':
                         ?>
                         <li class="nav-item">
-                            <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">
-                                Login
-                            </a>
-                        </li>
-                        <?php
-                        break;
-                    case "user":
-                        ?>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="./index.php?action=logout" class="nav-link">
                                 Logout
                             </a>
                         </li>
                         <?php
                         break;
-                    case "admin":
+                    case 'A':
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Users</a>
+                            <a class="nav-link" href="./index.php?action=admin">Users</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Ads</a>
+                            <a class="nav-link" href="#">Ads</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.php?action=logout">
+                                Logout
+                            </a>
                         </li>
                         <?php
                         break;
                     default:
                         ?>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="modal" data-target="#modalLoginForm" href="#">
+                                Login
+                            </a>
+                        </li>
                         <?php
                         break;
                 }

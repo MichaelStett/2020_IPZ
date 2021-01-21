@@ -13,14 +13,15 @@ class UserRepository implements IRepository
 
     public function exist($params) : ?User
     {
-        $username = $params['username'];
+        $email = $params['email'];
+
         $password = hash('md5', $params['password']);
 
-        $sql = "SELECT * FROM users WHERE username = :username AND password = :password";
+        $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
         $statement = $this->pdo->prepare($sql);
 
         $result = $statement->execute(array(
-            'username' => $username,
+            'email' => $email,
             'password' => $password,
         ));
 
@@ -85,6 +86,30 @@ class UserRepository implements IRepository
         $statement = $this->pdo->prepare($sql);
 
         $statement->bindValue(':username', $username);
+
+        $result = $statement->execute();
+
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (! $row) {
+            return null;
+        }
+
+        $user = new User($row);
+
+        return $user;
+    }
+
+    /**
+     * @param $email
+     * @return User|null
+     */
+    public function getByEmail($email) : ?User
+    {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $statement = $this->pdo->prepare($sql);
+
+        $statement->bindValue(':email', $email);
 
         $result = $statement->execute();
 
