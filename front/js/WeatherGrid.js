@@ -56,13 +56,15 @@ const WeatherGrid = class {
             latitude: data.coord.lat,
             longitude: data.coord.lon
         };
-
         let currentWeatherElement = document.getElementById(`weather_${index}`)
-
         currentWeatherElement.innerHTML = `
-                    <button type="button" class="close" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <form action="./deleteFavourite.php"  method="POST">
+                        <input type = hidden value="${cityName}" name="cityName">
+                        <button type="submit" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </form>
+
                     <img src=${currentWeather.icon} style="width: 100px; height: 100px;" alt=${currentWeather.name}>
                     <div>
                         <h5>${currentWeather.cityName}</h5> 

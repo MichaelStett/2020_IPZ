@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
 
-$_COOKIE['uid'] = 2;
+$_COOKIE['uid'] = 1;
 
 class UserView
 {
@@ -17,16 +17,18 @@ class UserView
             </div>
 
             <div class="row">
+                <form method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter city name" id="searchInput">
+                    <input type="text" class="form-control" placeholder="Enter city name" id="searchInput" name="searchInput" >
                     <div class="input-group-append">
                         <button type="button" class="btn btn-primary" id="getWeatherButton"><i class="fas fa-search"></i>
                             Get Weather</button>
-                        <button type="button" class="btn btn-secondary" id="addCity"><i class="fas fa-plus"></i>
+                        <button type="submit" formaction="./addFavourite.php"  class="btn btn-secondary" id="addCity" name="addCity"><i class="fas fa-plus"></i>
                             Add To Favourites</button>
                     </div>
 
                 </div>
+                </form>
             </div>
 
             <!-- <div class="row">
@@ -162,7 +164,6 @@ class UserView
             let jArray = <?php echo json_encode($array); ?>;
 
             jArray.forEach(async (cityName, index) => await grid.create(cityName, index))
-            console.log("Siema");
         </script>
 
         <?php

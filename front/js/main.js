@@ -34,8 +34,7 @@ const getWeatherForSearchedCity = async () => {
 
     if (cityName.length >= 3) {
         let data = await api.getWeatherByName(cityName);
-        console.log(data);
-        let currentWeather = { 
+        let currentWeather = {
             cityName: cityName, 
             icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
             name: data.weather[0].main,
