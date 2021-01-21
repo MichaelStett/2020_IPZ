@@ -7,7 +7,7 @@ class GuestView
     {
         ob_start();
         ?>
-        <?= Layout::header(['userType' => "guest"]); ?>
+        <?= Layout::header(); ?>
 
         <div class="container">
             <div class="row">

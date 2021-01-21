@@ -58,16 +58,17 @@ class UserView
             </div>
 
             <div class="row">
-                <div class="col-md-9" id="map_col">
+                <div class="col">
                     <h5>Map</h5>
                     <div id="map-wrapper">
                         <div id="mapid"></div>
                     </div>
                 </div>
-                <div class="col-md-3" id="ad_col">
+                <div class="col-md-4" id="ad_col">
                     <h5>Ad</h5>
                 </div>
             </div>
+
 
             <div class="row">
                 <div class="col">
@@ -87,7 +88,7 @@ class UserView
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100 h-100" src="./front/img/ads/Jacket_Ad.png" alt=" First slide">
+                                <img class="d-block w-100 h-90" src="./front/img/ads/Jacket_Ad.png" alt=" First slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Jacket DESIGN</h5>
                                     <p>Smooth woven fabric with synthetic filling for lightweight warmth. Made with recycled
@@ -97,7 +98,7 @@ class UserView
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 h-100" src="./front/img/ads/Umbrella_Ad.png" alt="Second slide">
+                                <img class="d-block w-100 h-90" src="./front/img/ads/Umbrella_Ad.png" alt="Second slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Umbrella UMMY</h5>
                                     <p>This windproof, automatic opening recycled umbrella has a vented overlapping canopy,
@@ -106,7 +107,7 @@ class UserView
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 h-100" src="./front/img/ads/Sunglasses_Ad.png" alt="Third slide">
+                                <img class="d-block w-100 h-90" src="./front/img/ads/Sunglasses_Ad.png" alt="Third slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Sunglasses SUNNY</h5>
                                     <p>Designed and crafted in Italy. Crystal-tempered sunglass lenses provide protection
@@ -115,7 +116,7 @@ class UserView
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 h-100" src="./front/img/ads/WateringCan_Ad.png" alt="Fourth slide">
+                                <img class="d-block w-100 h-90" src="./front/img/ads/WateringCan_Ad.png" alt="Fourth slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Watering Can CONNY</h5>
                                     <p>CONNY watering can is a trusted solution designed mainly for gardening activities.
@@ -149,8 +150,7 @@ class UserView
         <?= Layout::footer() ?>
         <?php
         $weather = new WeatherRepository();
-        $id = $_COOKIE['uid'];
-        $array = $weather->getCitynames($id);?>
+        $array = $weather->getCitynames($_SESSION['id']);?>
 
         <script type="module">
             import { WeatherApi } from './front/js/WeatherApi.js';
