@@ -27,17 +27,6 @@ class GuestView
             <div class="row">
                 <div class="col-md-6">
                     <div class="col-md-12" id="searchedWeather">
-                        <img src="https://openweathermap.org/img/wn/02n@2x.png" style="width: 100px; height: 100px;" alt="Clouds">
-                        <div>
-                            <h5>Barcelona</h5>
-                            <p>
-                            </p><div>
-                                <p><strong>11.29°C</strong>
-                                    but feels like: 6.8°C</p>
-                            </div>
-                            <p><small>Humidity: 62% | Pressure: 1006hPA</small></p>
-                            <p><small>Wind: 13 km/h | Air Quality: Moderate</small></p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
