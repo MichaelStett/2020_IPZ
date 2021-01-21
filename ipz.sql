@@ -28,22 +28,27 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
-  `password` varchar(50) NOT NULL
+                         `id` int(11) NOT NULL,
+                         `username` varchar(50) NOT NULL,
+                         `firstName` varchar(255) NOT NULL,
+                         `lastName` varchar(255) NOT NULL,
+                         `email` varchar(255) NOT NULL,
+                         `status` varchar(255) NOT NULL,
+                         `role` varchar(1) NOT NULL,
+                         `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `role`, `password`) VALUES
-(1, 'admin', 'adminFirstName', 'adminLastName', 'A', '21232f297a57a5a743894a0e4a801fc3'),
-(2, 'user1', 'user1FirstName', 'user1LastName', 'U', '5f4dcc3b5aa765d61d8327deb882cf99'),
-(3, 'marcin', 'Marcin', 'Jedrzejowski', 'A', '$2y$10$dpqA5HzMpGangwYKYZtbXenrO/VP.gfoSUasqUs1ggs');
+INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`,`role`, `email`, `status`, `password`) VALUES
+(1, 'admin', 'adminFirstName', 'adminLastName', 'A', 'admin@mail.com', true,  '21232f297a57a5a743894a0e4a801fc3'),
+(2, 'user1', 'user1FirstName', 'user1LastName', 'U', 'user1@mail.com', true,  '5f4dcc3b5aa765d61d8327deb882cf99'),
+(3, 'user2', 'user2FirstName', 'user2LastName', 'U', 'user2@mail.com', false, '5f4dcc3b5aa765d61d8327deb882cf99'),
+(4, 'user3', 'user3FirstName', 'user3LastName', 'U', 'user3@mail.com', false, '5f4dcc3b5aa765d61d8327deb882cf99'),
+(5, 'user4', 'user4FirstName', 'user4LastName', 'U', 'user4@mail.com', true,  '5f4dcc3b5aa765d61d8327deb882cf99'),
+(6, 'marcin', 'Marcin', 'Jedrzejowski', 'A', 'marcin@mail.com', true, '$2y$10$dpqA5HzMpGangwYKYZtbXenrO/VP.gfoSUasqUs1ggs');
 
 -- --------------------------------------------------------
 
@@ -52,9 +57,9 @@ INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `role`, `passwor
 --
 
 CREATE TABLE `weather` (
-  `id` int(255) NOT NULL,
-  `user_id` int(255) NOT NULL,
-  `city_name` text NOT NULL
+                           `id` int(255) NOT NULL,
+                           `user_id` int(255) NOT NULL,
+                           `city_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -75,13 +80,13 @@ INSERT INTO `weather` (`id`, `user_id`, `city_name`) VALUES
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `weather`
 --
 ALTER TABLE `weather`
-  ADD PRIMARY KEY (`id`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -91,13 +96,13 @@ ALTER TABLE `weather`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `weather`
 --
 ALTER TABLE `weather`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

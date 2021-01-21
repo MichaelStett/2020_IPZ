@@ -118,7 +118,7 @@ class Layout
 
         ob_start();
         ?>
-        <link rel="stylesheet" href="./front/css/styles.css">
+        <link rel="stylesheet" href="./front/css/logged_styles.css">
 
         <header class="position-sticky">
             <nav class="navbar navbar-expand-lg sticky-top">
