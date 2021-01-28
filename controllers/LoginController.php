@@ -22,6 +22,7 @@ class LoginController
                 $_SESSION['uid'] = hash("md5", $user);
                 $_SESSION['role'] = $user->getRole();
                 $_SESSION['id'] = $user->getId();
+                setcookie('usr_id', $user->getId());
 
                 echo "Successfully logged in for: " . $user . PHP_EOL;
             }

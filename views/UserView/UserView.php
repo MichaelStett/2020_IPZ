@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/../../autoload.php';
 
-$_COOKIE['uid'] = 1;
-
 
 class UserView
 {
@@ -66,7 +64,9 @@ class UserView
                     </div>
                 </div>
                 <div class="col-md-4" id="ad_col">
-                    <h5>Ad</h5>
+                    <a href="http://www.weather.com/">
+                        <img class="small_ad" src="./front/img/ads/Weather.png" alt="Banner" >
+                    </a>
                 </div>
             </div>
 
@@ -151,7 +151,7 @@ class UserView
         <?= Layout::footer() ?>
         <?php
         $weather = new WeatherRepository();
-        $id = $_COOKIE['uid'];
+        $id = $_SESSION['id'];
         $array = $weather->getCitynames($id);?>
 
 
