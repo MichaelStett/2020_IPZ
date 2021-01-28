@@ -37,7 +37,7 @@ class WeatherRepository
     public function addWeather($city_name)
     {
         try {
-            $user_id = $_COOKIE['uid'];
+            $user_id = $_COOKIE["usr_id"];
 
             $sql = "INSERT INTO weather (user_id, city_name) VALUES (:user_id, :city_name);";
 
@@ -54,7 +54,7 @@ class WeatherRepository
 
     public function deleteWeather($city_name)
     {
-                $user_id = $_COOKIE['uid'];
+                $user_id = $_COOKIE['usr_id'];
 
                 $sql = "DELETE FROM weather WHERE city_name = :city_name AND user_id = :user_id";
 

@@ -129,14 +129,16 @@ class Layout
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto"></ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./index.php?action=main">Home <span class="sr-only">(current)</span></a>
-                        </li>
+
                 <?php
                 switch ($userType) {
                     case 'U':
                         ?>
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="./index.php?action=main">Home <span class="sr-only">(current)</span></a>
+                            </li>
                         <li class="nav-item">
                             <a href="./index.php?action=logout" class="nav-link">
                                 Logout
@@ -146,6 +148,10 @@ class Layout
                         break;
                     case 'A':
                         ?>
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="./index.php?action=user">Home <span class="sr-only">(current)</span></a>
+                                </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./index.php?action=admin">Users</a>
                         </li>
@@ -161,6 +167,10 @@ class Layout
                         break;
                     default:
                         ?>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="./index.php?action=main">Home <span class="sr-only">(current)</span></a>
+                                    </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="modal" data-target="#modalLoginForm" href="#">
                                 Login
